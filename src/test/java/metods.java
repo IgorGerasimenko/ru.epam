@@ -57,6 +57,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
             driver.findElement(By.cssSelector(css)).sendKeys(keys);
         }
 
+        public void findByClassAndSendKeys(String cl, String keys) {
+            driver.findElement(By.className(cl)).sendKeys(keys);
+        }
+
+
+
         //ожидание элемента на странице
         public void waitElmById(String id) {
             //инициализация WebDriverWait, таймаут 10 секунд

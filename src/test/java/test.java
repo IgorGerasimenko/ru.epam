@@ -43,6 +43,19 @@ public class test extends metods{
         waitElmByClass("header-auth__signin");
     }
 
+    @Test
+    public void Test5() {
+        //поиск тренингов в г. Самаре
+        openSite("https://www.training.ru/");
+        waitElmByCss("#training > div.filters.ng-isolate-scope > div.filter-toggle > form > input");
+        findByCssAndSendKeys("#training > div.filters.ng-isolate-scope > div.filter-toggle > form > input", "самара");
+        waitElmByClass("checkmark");
+
+
+
+
+    }
+
 
 
 
