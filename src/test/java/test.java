@@ -16,13 +16,7 @@ public class test extends metods{
     @Test
     public void Test2() {
         //Залогиниться (валидые значения)
-        openSite("https://www.training.ru/");
-        findByClassAndClick("header-auth__signin");
-        waitElmById("kc-content");
-        findByIdAndSendKeys("username", "shprotagera@yandex.ru");
-        findByIdAndSendKeys("password", "TestTestTest");
-        findByIdAndClick("kc-login");
-        waitElmByCss("#header > div.container > div.user-navigation-container > div.header-controls > div.dropdown.user-info-desktop > a > div.user-info__name");
+        logIn();
     }
 
 
@@ -39,6 +33,15 @@ public class test extends metods{
         waitElmByCss("#kc-content-wrapper > div.uk-width-1-1\\@s > div > p");
     }
 
+    @Test
+    public void Test4() {
+        //разлогиниться (выйти из сиcтемы)
+        logIn();
+        findByClassAndClick("arrow");
+        waitElmByCss("#header > div.container > div.user-navigation-container > div.header-controls > div.dropdown.user-info-desktop.open > div > div:nth-child(5) > a");
+        findByCssAndClick("#header > div.container > div.user-navigation-container > div.header-controls > div.dropdown.user-info-desktop.open > div > div:nth-child(5) > a");
+        waitElmByClass("header-auth__signin");
+    }
 
 
 

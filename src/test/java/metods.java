@@ -32,7 +32,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
         }
 
         //поиск элемента и клик по нему
-        public void findCssClick(String s) {
+        public void findByCssAndClick(String s) {
             driver.findElement(By.cssSelector(s)).click();
         }
 
@@ -79,7 +79,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 
+        public void logIn() {
+            openSite("https://www.training.ru/");
+            findByClassAndClick("header-auth__signin");
+            waitElmById("kc-content");
+            findByIdAndSendKeys("username", "shprotagera@yandex.ru");
+            findByIdAndSendKeys("password", "TestTestTest");
+            findByIdAndClick("kc-login");
+            waitElmByCss("#header > div.container > div.user-navigation-container > div.header-controls > div.dropdown.user-info-desktop > a > div.user-info__name");
+             }
 
 
-    }
+
+
+
+
+
+
+
+         }
+
+
+
+
+
+
+
 
