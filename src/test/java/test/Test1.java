@@ -5,16 +5,16 @@ import org.openqa.selenium.support.PageFactory;
 import page.HomePage;
 import page.SignInPage;
 
-public class Tests extends DriverSettings {
+public class Test1 extends DriverSettings {
 
-    @Test
+    @org.junit.Test
         public void Test1(){
         HomePage HomePage = PageFactory.initElements(driver, HomePage.class);
         HomePage.open();
         HomePage.assertTittle();
         }
 
-    @Test
+    @org.junit.Test
     public void Test2() {
         SignInPage SignInPage = PageFactory.initElements(driver, page.SignInPage.class);
         SignInPage.open();
@@ -30,7 +30,7 @@ public class Tests extends DriverSettings {
         HomePage.waitUserInfoName();
     }
 
-    @Test
+    @org.junit.Test
     public void Test3() {
         SignInPage SignInPage = PageFactory.initElements(driver, page.SignInPage.class);
         SignInPage.open();
