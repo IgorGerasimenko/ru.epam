@@ -35,53 +35,62 @@ public class SignInPage {
     @FindBy(id="kc-login")
     private WebElement signInButton;
 
-    @FindBy(css="#alert-error > div.alert-summary")
+    @FindBy(css="#alert-error > span > span")
     private WebElement signInErrorReport;
-
 
 //----------------------------------------------
 
-    public void open(){
+    public SignInPage open(){
         driver.get("https://www.training.ru/");
         driver.manage().window().maximize();
         HomePage HomePage = PageFactory.initElements(driver, HomePage.class);
         HomePage.clickSignUpButton();
+        return this;
     }
 
-    public void waitLoginForm(){
+    public SignInPage waitLoginForm(){
         wait.until(ExpectedConditions.visibilityOf((continueButton)));
+        return this;
     }
 
-    public void waitPasswordForm(){
+    public SignInPage waitPasswordForm(){
         wait.until(ExpectedConditions.visibilityOf((passWord)));
+        return this;
     }
 
-    public void waitSingInErrorReport(){
+    public SignInPage waitSingInErrorReport(){
         wait.until(ExpectedConditions.visibilityOf((signInErrorReport)));
+        return this;
     }
 
-    public void clickUserName(){
+    public SignInPage clickUserName(){
         userName.click();
+        return this;
     }
 
-    public void clickPassword(){
+    public SignInPage clickPassword(){
         passWord.click();
+        return this;
     }
 
-    public void clickContinueButton(){
+    public SignInPage clickContinueButton(){
         continueButton.click();
+        return this;
     }
 
-    public void clickSignInButton(){
+    public SignInPage clickSignInButton(){
         signInButton.click();
+        return this;
     }
 
-    public void userNameSendKeys(String username){
+    public SignInPage userNameSendKeys(String username){
         userName.sendKeys(username);
+        return this;
     }
 
-    public void passwordSendKeys(String password){
+    public SignInPage passwordSendKeys(String password){
         passWord.sendKeys(password);
+        return this;
     }
 
 

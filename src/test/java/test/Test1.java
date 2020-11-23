@@ -1,5 +1,6 @@
 package test;
 import driver.DriverSettings;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
 import page.HomePage;
@@ -8,41 +9,37 @@ import page.SignInPage;
 public class Test1 extends DriverSettings {
 
     @org.junit.Test
-        public void Test1(){
-        HomePage HomePage = PageFactory.initElements(driver, HomePage.class);
-        HomePage.open();
-        HomePage.assertTittle();
-        }
+    public void Test1(){
+          homePage.open()
+                  .assertTittle();
+    }
 
     @org.junit.Test
     public void Test2() {
-        SignInPage SignInPage = PageFactory.initElements(driver, page.SignInPage.class);
-        SignInPage.open();
-        SignInPage.waitLoginForm();
-        SignInPage.clickUserName();
-        SignInPage.userNameSendKeys("shprotagera@yandex.ru");
-        SignInPage.clickContinueButton();
-        SignInPage.waitPasswordForm();
-        SignInPage.clickPassword();
-        SignInPage.passwordSendKeys("TestTestTest");
-        SignInPage.clickSignInButton();
-        HomePage HomePage = PageFactory.initElements(driver, HomePage.class);
-        HomePage.waitUserInfoName();
+        signInPage.open()
+                  .waitLoginForm()
+                  .clickUserName()
+                  .userNameSendKeys("shprotagera@yandex.ru")
+                  .clickContinueButton()
+                  .waitPasswordForm()
+                  .clickPassword()
+                  .passwordSendKeys("TestTestTest")
+                  .clickSignInButton();
+        homePage.waitUserInfoName();
     }
 
     @org.junit.Test
     public void Test3() {
-        SignInPage SignInPage = PageFactory.initElements(driver, page.SignInPage.class);
-        SignInPage.open();
-        SignInPage.waitLoginForm();
-        SignInPage.clickUserName();
-        SignInPage.userNameSendKeys("shprotagera@yandex.ru");
-        SignInPage.clickContinueButton();
-        SignInPage.waitPasswordForm();
-        SignInPage.clickPassword();
-        SignInPage.passwordSendKeys("TestTest");
-        SignInPage.clickSignInButton();
-        SignInPage.waitSingInErrorReport();
+        signInPage.open()
+                  .waitLoginForm()
+                  .clickUserName()
+                  .userNameSendKeys("shprotagera@yandex.ru")
+                  .clickContinueButton()
+                  .waitPasswordForm()
+                  .clickPassword()
+                  .passwordSendKeys("TestTest")
+                  .clickSignInButton()
+                  .waitSingInErrorReport();
 
     }
 

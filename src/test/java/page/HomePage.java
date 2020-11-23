@@ -31,28 +31,32 @@ public class HomePage{
 
 //----------------------------------------------------------------------------
 
-    public void open(){
+    public HomePage open(){
         driver.get("https://www.training.ru/");
         driver.manage().window().maximize();
+        return this;
      }
 
-    public void assertTittle(){
+    public HomePage assertTittle(){
         assertThat(driver.getTitle(), is("Тренинг-центр EPAM в России - программы обучения" +
                 " для студентов, а также тех, кто хочет начать карьеру в IT | training.ru"));
+        return this;
     }
 
-    public void clickSignUpButton(){
+    public HomePage clickSignUpButton() {
         signUpButton.click();
+        return this;
     }
 
-    public void waitSignUpButton(){
+    public HomePage waitSignUpButton() {
         wait.until(ExpectedConditions.visibilityOf((signUpButton)));
+        return this;
     }
 
-    public void waitUserInfoName(){
+    public HomePage waitUserInfoName(){
         wait.until(ExpectedConditions.visibilityOf((userInfoNameButton)));
         driver.findElement(By.linkText("shprotagera"));
-
+        return this;
 
     }
 
