@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.junit.Assert.assertTrue;
+
 public class SignInPage {
 
     private WebDriver driver;
@@ -26,9 +28,6 @@ public class SignInPage {
     @FindBy(id="kc-login-next")
     private WebElement continueButton;
 
-    @FindBy(id="username")
-    private WebElement userName;
-
     @FindBy(id="password")
     private WebElement passWord;
 
@@ -38,13 +37,15 @@ public class SignInPage {
     @FindBy(css="#alert-error > span > span")
     private WebElement signInErrorReport;
 
+    @FindBy(css=".header-auth__signin")
+    private WebElement signUpButton;
+
 //----------------------------------------------
 
     public SignInPage open(){
         driver.get("https://www.training.ru/");
         driver.manage().window().maximize();
-        HomePage HomePage = PageFactory.initElements(driver, HomePage.class);
-        HomePage.clickSignUpButton();
+        signUpButton.click();
         return this;
     }
 
@@ -58,13 +59,13 @@ public class SignInPage {
         return this;
     }
 
-    public SignInPage waitSingInErrorReport(){
-        wait.until(ExpectedConditions.visibilityOf((signInErrorReport)));
+    public SignInPage assertThatSingInErrorReportIsDisplayed(){
+        assertTrue(signInErrorReport.isDisplayed());
         return this;
     }
 
     public SignInPage clickUserName(){
-        userName.click();
+        username.click();
         return this;
     }
 
@@ -83,10 +84,10 @@ public class SignInPage {
         return this;
     }
 
-    public SignInPage userNameSendKeys(String username){
-        userName.sendKeys(username);
+    public SignInPage userNameSendKeys(String login){
+        username.sendKeys(login);
         return this;
-    }
+       }
 
     public SignInPage passwordSendKeys(String password){
         passWord.sendKeys(password);

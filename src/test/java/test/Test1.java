@@ -6,16 +6,18 @@ import org.openqa.selenium.support.PageFactory;
 import page.HomePage;
 import page.SignInPage;
 
+import static org.junit.Assert.assertTrue;
+
 public class Test1 extends DriverSettings {
 
-    @org.junit.Test
-    public void Test1(){
+    @Test
+    public void openHPAndAssertThatTittleIsCorect(){
           homePage.open()
-                  .assertTittle();
+                  .assertThatTittleIsCorrect();
     }
 
-    @org.junit.Test
-    public void Test2() {
+    @Test
+    public void LoginWithValidValues() {
         signInPage.open()
                   .waitLoginForm()
                   .clickUserName()
@@ -25,11 +27,11 @@ public class Test1 extends DriverSettings {
                   .clickPassword()
                   .passwordSendKeys("TestTestTest")
                   .clickSignInButton();
-        homePage.waitUserInfoName();
+        homePage.assertThatUserInfoNameIsDisplayed();
     }
 
-    @org.junit.Test
-    public void Test3() {
+    @Test
+    public void LoginWithInvalidPass() {
         signInPage.open()
                   .waitLoginForm()
                   .clickUserName()
@@ -39,9 +41,23 @@ public class Test1 extends DriverSettings {
                   .clickPassword()
                   .passwordSendKeys("TestTest")
                   .clickSignInButton()
-                  .waitSingInErrorReport();
-
+                  .assertThatSingInErrorReportIsDisplayed();
     }
+
+    @Test
+    public void LoginWithInvalidLogin() {
+        signInPage.open()
+                .waitLoginForm()
+                .clickUserName()
+                .userNameSendKeys("Invalid@Invalid.ru")
+                .clickContinueButton()
+                .waitPasswordForm()
+                .clickPassword()
+                .passwordSendKeys("TestTestTest")
+                .clickSignInButton()
+                .assertThatSingInErrorReportIsDisplayed();
+    }
+
 
 
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class HomePage{
 
@@ -37,7 +38,7 @@ public class HomePage{
         return this;
      }
 
-    public HomePage assertTittle(){
+    public HomePage assertThatTittleIsCorrect(){
         assertThat(driver.getTitle(), is("Тренинг-центр EPAM в России - программы обучения" +
                 " для студентов, а также тех, кто хочет начать карьеру в IT | training.ru"));
         return this;
@@ -53,12 +54,16 @@ public class HomePage{
         return this;
     }
 
-    public HomePage waitUserInfoName(){
-        wait.until(ExpectedConditions.visibilityOf((userInfoNameButton)));
-        driver.findElement(By.linkText("shprotagera"));
+//    public HomePage waitUserInfoName(){
+//        wait.until(ExpectedConditions.visibilityOf((userInfoNameButton)));
+//        return this;
+//
+//    }
+
+    public HomePage assertThatUserInfoNameIsDisplayed(){
+        assertTrue(userInfoNameButton.isDisplayed() );
         return this;
 
     }
-
 
 }
