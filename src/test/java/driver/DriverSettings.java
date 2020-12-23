@@ -10,6 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import page.HomePage;
 import page.SignInPage;
 
+import javax.xml.datatype.Duration;
+import java.util.concurrent.TimeUnit;
+
 
 public class DriverSettings {
 
@@ -24,6 +27,7 @@ public class DriverSettings {
         System.out.println("Driver started");
         homePage = PageFactory.initElements(driver, HomePage.class);
         signInPage = PageFactory.initElements(driver, page.SignInPage.class);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
 
     @After

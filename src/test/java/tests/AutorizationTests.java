@@ -1,14 +1,25 @@
-package test;
+package tests;
 import driver.DriverSettings;
-import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import page.HomePage;
 import page.SignInPage;
 
+import javax.swing.text.Element;
+
+import java.util.List;
+
 import static org.junit.Assert.assertTrue;
 
-public class Test1 extends DriverSettings {
+public class AutorizationTests extends DriverSettings {
+
+    public WebDriverWait wait;
+    public WebElement element;
+
 
     @Test
     public void openHPAndAssertThatTittleIsCorect(){
@@ -19,11 +30,9 @@ public class Test1 extends DriverSettings {
     @Test
     public void LoginWithValidValues() {
         signInPage.open()
-                  .waitLoginForm()
                   .clickUserName()
                   .userNameSendKeys("shprotagera@yandex.ru")
                   .clickContinueButton()
-                  .waitPasswordForm()
                   .clickPassword()
                   .passwordSendKeys("TestTestTest")
                   .clickSignInButton();
@@ -33,11 +42,9 @@ public class Test1 extends DriverSettings {
     @Test
     public void LoginWithInvalidPass() {
         signInPage.open()
-                  .waitLoginForm()
                   .clickUserName()
                   .userNameSendKeys("shprotagera@yandex.ru")
                   .clickContinueButton()
-                  .waitPasswordForm()
                   .clickPassword()
                   .passwordSendKeys("TestTest")
                   .clickSignInButton()
@@ -47,17 +54,30 @@ public class Test1 extends DriverSettings {
     @Test
     public void LoginWithInvalidLogin() {
         signInPage.open()
-                .waitLoginForm()
                 .clickUserName()
                 .userNameSendKeys("Invalid@Invalid.ru")
                 .clickContinueButton()
-                .waitPasswordForm()
                 .clickPassword()
                 .passwordSendKeys("TestTestTest")
                 .clickSignInButton()
                 .assertThatSingInErrorReportIsDisplayed();
     }
 
+    @Test
+    public void LoginWithNoValidLoginFormat() {
+        signInPage.open()
+                .clickUserName()
+                .userNameSendKeys("InvalidEmailFormat")
+                .assertThatContinueButtonIsNotActive();
 
+    }
+
+//        @Test
+//        public void Kosmoport() {
+//        driver.get("https://kosmoport.comfortkino.ru/");
+//        element = driver.findElement(By.xpath("//*[text()='Кинобонус']"));
+//            assertTrue(element.isDisplayed());
+//
+//    }
 
 }

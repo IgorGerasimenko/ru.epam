@@ -49,10 +49,10 @@ public class HomePage{
         return this;
     }
 
-    public HomePage waitSignUpButton() {
-        wait.until(ExpectedConditions.visibilityOf((signUpButton)));
-        return this;
-    }
+//    public HomePage waitSignUpButton() {
+//        wait.until(ExpectedConditions.visibilityOf((signUpButton)));
+//        return this;
+//    }
 
 //    public HomePage waitUserInfoName(){
 //        wait.until(ExpectedConditions.visibilityOf((userInfoNameButton)));

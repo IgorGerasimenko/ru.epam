@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class SignInPage {
@@ -49,21 +50,6 @@ public class SignInPage {
         return this;
     }
 
-    public SignInPage waitLoginForm(){
-        wait.until(ExpectedConditions.visibilityOf((continueButton)));
-        return this;
-    }
-
-    public SignInPage waitPasswordForm(){
-        wait.until(ExpectedConditions.visibilityOf((passWord)));
-        return this;
-    }
-
-    public SignInPage assertThatSingInErrorReportIsDisplayed(){
-        assertTrue(signInErrorReport.isDisplayed());
-        return this;
-    }
-
     public SignInPage clickUserName(){
         username.click();
         return this;
@@ -93,6 +79,19 @@ public class SignInPage {
         passWord.sendKeys(password);
         return this;
     }
+
+    public SignInPage assertThatSingInErrorReportIsDisplayed(){
+        wait.until(ExpectedConditions.visibilityOf((signInErrorReport)));
+        assertTrue(signInErrorReport.isDisplayed());
+        return this;
+    }
+
+    public SignInPage assertThatContinueButtonIsNotActive(){
+        assertFalse(continueButton.isEnabled());
+        return this;
+    }
+
+
 
 
     }
